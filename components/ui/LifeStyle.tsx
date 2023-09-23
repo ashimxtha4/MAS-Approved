@@ -1,56 +1,69 @@
-import React from "react";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
-import { imageUrlCheck } from "../../utilities/helper";
+import Image from "next/image";
+import moment from "moment";
+import { useAppSelector } from "../../state";
 
-const LifeStyle = ({ blog = {} }: any) => {
-  const blogPostedDate = blog.createdAt;
+const LifeStyle = () => {
+  const data = useAppSelector((state) => state?.blogData?.lifestyle?.items);
+  const categoryData = useAppSelector(
+    (state) => state?.categoryData?.data?.items
+  );
 
-  // const [blogPostedDate, setBlogPostedDate] = useState("")
-  // setBlogPostedDate(blog[0].createdAt)
-  //   console.log("postedOn",blogPostedDate);
-  if (Object.keys(blog).length > 0)
-    return (
-      <>
-        <div
-          className="homeBlogTypeSmall"
-          // style={{ backgroundImage: `url(${blog.images[0]})` }}
-        >
-          <div className="thumbnail">
-            <img
-              src={imageUrlCheck(blog.images[0] as string)}
-              className="blogCardBackground"
-              alt="Basobaas Nepal"
-            />
-          </div>
-          <div className="cardContent">
-            <div className="blogCategoryTag">
-              <p>{blog.category?.name}</p>
-            </div>
-            <div className="blogTitle">
-              <p>{blog.title}</p>
-            </div>
-            <div className="blogBy">
-              <div className="author">{blog.author?.fullName}</div>
-              <div className="separator">
-                <Icon
-                  icon="ci:dot-05-xl"
-                  width="15"
-                  height="15"
-                  color="#FFFFFF"
-                />
+  return (
+    <>
+      <div className="lifeStyleTitleDiv">
+        <label className="lifeStyleTitle">जीवनशैली</label>
+        <span className="lifeStyleViewAllButton">सबै हेर्नुहोस्</span>
+      </div>
+      <div className="lifeStyleCardDiv">
+        {data?.map((data, index) => {
+          return (
+            <div className="lifeStyleCard" key={index}>
+              <div className="lifestyle">
+                <div className="thumbnail">
+                  <img
+                    className="image"
+                    src={`${process.env.NEXT_PUBLIC_APP_API_URL as string}${
+                      data.images[0]
+                    }`}
+                    alt="basobaas nepal"
+                  />
+                </div>
+                <div className="cardContent">
+                  <div className="blogCategoryTag">
+                    <p>
+                      {
+                        categoryData?.find(
+                          (obj: any) => obj.id == data?.category
+                        )?.name_np
+                      }
+                    </p>
+                  </div>
+                  <div className="blogTitle">
+                    <p>{data?.title_np}</p>
+                  </div>
+                  <div className="blogBy">
+                    <div className="author">राजन अधिकारी</div>
+                    <div className="separator">
+                      <Icon
+                        icon="ci:dot-05-xl"
+                        width="15"
+                        height="15"
+                        color="#FFFFFF"
+                      />
+                    </div>
+                    <div className="posted">
+                      {moment(`${data?.created}`).fromNow()}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="posted">
-                {/* {createdAt} */}
-                {/* {blogPostedDate} */}
-                hi
-              </div>
             </div>
-          </div>
-        </div>
-      </>
-    );
-  else return null;
+          );
+        })}
+      </div>
+    </>
+  );
 };
 
 export default LifeStyle;

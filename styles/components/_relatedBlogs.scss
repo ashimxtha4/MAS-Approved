@@ -1,18 +1,25 @@
 .relatedBlogs {
-  width: 345px;
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: flex-start;
-  padding: 0px;
   gap: 16px;
 
   .imageContainer {
     width: 120px;
     height: 90px;
-    background: #d9d9d9;
+    background: transparent;
     border-radius: 6px;
+    max-width: 120px;
+    overflow: hidden;
+
+    .relatedBlogImages {
+      width: auto;
+      height: 100%;
+      border-radius: 6px;
+      transition: 0.3s ease-in-out;
+    }
   }
 
   .contentContainer {
@@ -20,31 +27,31 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 10px;
+    gap: 6px;
     width: 209px;
     height: fit-content;
 
     .categoryTitle {
       p {
-        font-family: "Product Sans", sans-serif;
+        font-family: "Ek Mukta";
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
         line-height: 140%;
         text-transform: uppercase;
-        color: #4f4f4f;
+        color: #969696;
         margin: 0px;
         padding: 0px;
       }
     }
     .blogHeader {
       p {
-        font-family: "Product Sans", sans-serif;
+        font-family: "Ek Mukta";
         font-style: normal;
         font-weight: 700;
-        font-size: 16px;
-        line-height: 140%;
-        color: #4f4f4f;
+        font-size: 14px;
+        line-height: 150%;
+        color: #333333;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: initial;
@@ -56,4 +63,20 @@
       }
     }
   }
+  &:hover {
+    .imageContainer {
+      .relatedBlogImages {
+        transform: scale(1.1);
+      }
+    }
+    .contentContainer {
+      .blogHeader {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.LinkHover:hover {
+  transform: none;
 }

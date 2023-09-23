@@ -5,8 +5,8 @@
   margin: 0px;
   padding: 0px;
   gap: 16px;
-  width: 345px;
-  height: 90px;
+  width: 100%;
+  height: 100%;
   transition: 0.4s all;
   cursor: pointer;
 
@@ -15,6 +15,13 @@
     height: 100%;
     background: #d9d9d9;
     border-radius: 6px;
+    overflow: hidden;
+
+    .image {
+      height: 100%;
+      width: auto;
+      transition: 0.3s ease-in-out;
+    }
   }
   .blogContents {
     display: flex;
@@ -23,7 +30,7 @@
     align-items: flex-start;
     gap: 10px;
     width: 209px;
-    height: fit-content;
+    height: 100%;
 
     .blogCategoryTitle {
       display: flex;
@@ -33,11 +40,11 @@
       p {
         margin: 0px;
         padding: 0px;
-        font-family: "Product Sans", sans-serif;
+        font-family: "Ek Mukta";
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
-        line-height: 140%;
+        line-height: 150%;
         text-transform: uppercase;
         color: #0000ff;
       }
@@ -47,37 +54,48 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      height: fit-content;
       p {
+        height:24px;
         margin: 0px;
-        padding: 0px;
-        font-family: "Product Sans", sans-serif;
+        padding-top: 2px;
+        font-family: "Ek Mukta";
         font-style: normal;
-        font-weight: 700;
+        font-weight: bold;
         font-size: 16px;
-        line-height: 140%;
+        line-height: 150%;
         color: #333333;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: initial;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
       }
     }
 
     .blogBy {
-      display: none;
+      display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+      font-size: 13px;
+      .author,
+        .posted {
+          font-family: "Ek Mukta";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 140%;
+          color: #4f4f4f;
+        }
     }
   }
 }
 
-.marketNewsTypeSecondary:hover {
-  transform: scale(0.9);
-}
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .marketNewsTypeSecondary {
-    width: 626.5px;
+    width: 100%;
     height: 133.33px;
 
     .imageContainer {
@@ -85,16 +103,13 @@
       height: 133.33px;
     }
     .blogContents {
-      width: 350.5px;
-      height: fit-content;
+      width: 100%;
+      height: 100%;
 
-      .blogCategoryTitle {
-        p {
-        }
-      }
       .blogHeader {
         p {
-          font-size: 20px;
+          font-size: 16px;
+          height: 24px;
         }
       }
 
@@ -106,7 +121,7 @@
 
         .author,
         .posted {
-          font-family: "Product Sans", sans-serif;
+          font-family: "Ek Mukta";
           font-style: normal;
           font-weight: 400;
           font-size: 14px;
@@ -121,4 +136,12 @@
       }
     }
   }
+}
+
+.marketNewsTypeSecondary:hover .blogHeader p {
+  text-decoration: underline;
+}
+
+.marketNewsTypeSecondary:hover .image {
+  transform: scale(1.1);
 }

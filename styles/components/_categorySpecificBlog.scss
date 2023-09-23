@@ -1,0 +1,167 @@
+.categorySpecificBlog {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 100%;
+  height: fit-content;
+  transition: 0.4s all;
+
+  .imageContainer {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 6px;
+    width: 100%;
+    height: fit-content;
+    max-height: 422px;
+    overflow: hidden;
+
+    .blogListingImage {
+      transition: 0.3s ease-in-out;
+      border-radius: 6px;
+      max-height: 422px;
+      overflow: hidden;
+    }
+  }
+
+  .blogContents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+
+    .blogHeaderSectionContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 6px;
+
+      .blogCategoryTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        p {
+          margin: 0px;
+          padding: 0px;
+          font-family: "Ek Mukta";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 140%;
+          text-transform: uppercase;
+          color: #0000ff;
+        }
+      }
+      .blogHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        p {
+          margin: 0px;
+          padding: 0px;
+          font-family: "Ek Mukta";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 140%;
+          color: #333333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: initial;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+
+    .blogBody {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      p {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Ek Mukta";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 180%;
+        color: #4f4f4f;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      figure {
+        display: none;
+      }
+    }
+
+    .blogBy {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+
+      .author,
+      .posted {
+        font-family: "Ek Mukta";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 140%;
+        color: #4f4f4f;
+      }
+
+      .separator {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &:hover {
+    .imageContainer {
+      .blogListingImage {
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        &:hover {
+          height: inherit;
+        }
+      }
+    }
+
+    .blogContents {
+      .blogHeaderSectionContainer {
+        .blogHeader {
+          p {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .categorySpecificBlog {
+    .imageContainer {
+      max-height: 422px;
+      overflow: hidden;
+    }
+  }
+}

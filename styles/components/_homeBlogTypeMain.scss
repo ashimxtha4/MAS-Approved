@@ -4,7 +4,8 @@
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  width: 250px;
+  min-width: 250px;
+  width: 100%;
   height: 250px;
   background: linear-gradient(
     0.14deg,
@@ -15,7 +16,6 @@
   align-self: stretch;
   margin: 0px;
   padding: 0px;
-  transition: 0.4s all;
   position: relative;
 
   .thumbnail {
@@ -31,12 +31,15 @@
       rgba(17, 16, 16, 0.7) 12.94%,
       rgba(0, 0, 0, 0) 67.86%
     );
+    overflow: hidden;
 
     .blogCardBackground {
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: -1;
+      transition-delay: 0.2s;
+      transition: 0.3s ease-in-out;
     }
   }
 
@@ -61,7 +64,6 @@
     padding: 0px;
     gap: 8px;
     width: 100%;
-    // height: 106px;
     height: fit-content;
     flex: none;
     align-self: stretch;
@@ -79,22 +81,30 @@
       background: #0000ff;
       padding: 0px 12px;
       border-radius: 3px;
+      z-index: 3;
 
-      p {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        font-family: "Product Sans", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 140%;
-        text-transform: uppercase;
-        color: #ffffff;
-        height: fit-content;
-        margin: 0px;
-        padding: 0px;
+      isolation: isolate;
+
+      .blogTagLinks {
+        display: inline-block;
+        transform: none;
+
+        p {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-family: "Ek Mukta";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 140%;
+          text-transform: uppercase;
+          color: #ffffff;
+          height: fit-content;
+          margin: 0px;
+          padding: 0px;
+        }
       }
     }
 
@@ -105,13 +115,14 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
+      height: fit-content;
 
       p {
-        font-family: "Product Sans", sans-serif;
+        font-family: "Ek Mukta";
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
-        line-height: 140%;
+        line-height: 150%;
         color: #ffffff;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -121,8 +132,11 @@
         -webkit-box-orient: vertical;
         margin: 0px;
         padding: 0px;
+        min-height: 42px;
+        height: fit-content;
       }
     }
+
     .blogBy {
       display: flex;
       flex-direction: row;
@@ -132,10 +146,10 @@
 
       .author,
       .posted {
-        font-family: "Product Sans", sans-serif;
+        font-family: "Ek Mukta";
         font-style: normal;
         font-weight: 400;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 140%;
         color: #ffffff;
       }
@@ -147,13 +161,17 @@
     }
   }
 }
-.homeBlogTypeMain:hover {
-  transform: scale(0.9);
+
+.homeBlogTypeMain:hover .blogTitle p {
+  text-decoration: underline;
 }
 
-@media only screen and (min-width: 1024px) {
+.homeBlogTypeMain:hover .blogCardBackground {
+  transform: scale(1.1);
+}
+
+@media only screen and (min-width: 710px) {
   .homeBlogTypeMain {
-    width: 637.5px;
     height: 500px;
 
     .thumbnail {
@@ -162,24 +180,40 @@
     }
 
     .cardContent {
-      .blogCategoryTag {
-        p {
-        }
-      }
-
       .blogTitle {
         p {
           font-style: normal;
           font-weight: 700;
-          font-size: 32px;
+          font-size: 24px;
         }
       }
+
       .blogBy {
         .author,
         .posted {
+          font-size: 14px;
         }
+      }
+    }
+  }
+}
 
-        .separator {
+@media only screen and (min-width: 1024px) {
+  .homeBlogTypeMain {
+    width: 100%;
+    height: 500px;
+
+    .thumbnail {
+      .blogCardBackground {
+      }
+    }
+
+    .cardContent {
+      .blogTitle {
+        p {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 24px;
         }
       }
     }

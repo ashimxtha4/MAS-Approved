@@ -1,38 +1,31 @@
 import React from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import MarketNewsTypeSecondaryImage from "../../public/Images/smallMarket.svg";
+import { useAppSelector } from "../../state";
 
-const MarketNewsTypeSecondary = ({ blog = {} as any }) => {
-  if (Object.keys(blog).length > 0)
+const MarketNewsTypeSecondary = (props: any) => {
+  const categoryList = useAppSelector((state)=>state.categoryData.data.items);
+
   return (
     <>
       <div className="marketNewsTypeSecondary">
         <div className="imageContainer">
           <Image
-            src=""
-            alt="Picture of the author"
-            width={260}
-            height={133.33}
+            src={props.image}
+            alt="Basobaas Nepal"
+            className="image"
           />
         </div>
         <div className="blogContents">
           <div className="blogCategoryTitle">
-            <p>
-              {/* ENTER BLOG CATEGORY TITLE HERE */}
-              {blog.category?.title}
-            </p>
+            <p>{categoryList?.find((obj:any)=>obj.id==props?.data.category)?.name_np}</p>
           </div>
           <div className="blogHeader">
-            <p>
-              {/* ENTER BLOG TITLE HERE */}
-              {blog.title}
-            </p>
+            <p>{props.data?.title_np}</p>
           </div>
           <div className="blogBy">
-            <span className="author">
-              {/* ENTER BLOG BY NAME HERE */}
-              {blog.author?.fullName}
-            </span>
+            <span className="author">राजन अधिकारी</span>
             <span className="separator">
               <Icon
                 icon="ci:dot-05-xl"
@@ -41,15 +34,12 @@ const MarketNewsTypeSecondary = ({ blog = {} as any }) => {
                 color="#969696"
               />
             </span>
-            <span className="posted">
-              {/* CALCULATE DATE AGO HERE BY USING MOMENT.JS */}2 weeks ago
-            </span>
+            <span className="posted">२ हप्ता अघि</span>
           </div>
         </div>
       </div>
     </>
   );
-  else return null;
 };
 
 export default MarketNewsTypeSecondary;
